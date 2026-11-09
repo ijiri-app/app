@@ -1,8 +1,12 @@
 import { Tabs } from 'expo-router/js-tabs';
 
+import { TabBar } from '@/components/tab-bar';
+
 export default function TabsLayout() {
   return (
-    <Tabs>
+    <Tabs
+      tabBar={(props) => <TabBar {...props} />}
+      screenOptions={{ headerShown: false, sceneStyle: { backgroundColor: '#111418' } }}>
       <Tabs.Screen name="feed" options={{ title: '피드' }} />
       <Tabs.Screen name="search" options={{ title: '검색' }} />
       <Tabs.Screen name="upload" options={{ title: '올리기' }} />
