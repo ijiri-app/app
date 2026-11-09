@@ -1,9 +1,15 @@
-import { Text, View } from 'react-native';
+import { router, useLocalSearchParams } from 'expo-router';
 
+import { CodeVerifyScreen } from '@/components/code-verify-screen';
+
+// Figma "05 Signup 2 Code / *"
 export default function SignupVerify() {
+  const { email = '' } = useLocalSearchParams<{ email?: string }>();
   return (
-    <View className="flex-1 items-center justify-center">
-      <Text>(auth)/signup/verify</Text>
-    </View>
+    <CodeVerifyScreen
+      email={email}
+      // TODO: 인증코드 확인 API
+      onVerified={() => router.push({ pathname: '/signup/profile', params: { email } })}
+    />
   );
 }
